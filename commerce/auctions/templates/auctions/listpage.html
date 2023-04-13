@@ -1,0 +1,65 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="container py-5">
+  <div class="row g-5">
+    <div class="col-md-5 col-lg-5 order-md-last text-center">
+    <img src="{{ list.url_image }}"  class="shadow-sm rounded mx-auto d-block" alt="{{ list.title }}">
+    <br>
+    <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Current bids (USD)</span>
+            <strong>${{ list.start_bid }}</strong>
+        </li>   
+    </ul>
+    <form class="card p-2">
+        <div class="input-group">
+          <input type="number" class="form-control" placeholder="Give a bid">
+          <button type="submit" class="btn btn-primary">Add Bid</button>
+        </div>
+    </form> 
+    {% if watchlist %}
+      <a class="w-100 btn btn-danger" href="{% url 'addwatchlist'  list.id %}" role="button">Remove Watchlist</a>
+    {% else %}
+      <a class="w-100 btn btn-success" href="{% url 'addwatchlist'  list.id %}" role="button">Add Watchlist</a>
+    {% endif %}
+    
+    <hr class="my-3">
+
+    <form action="{% url 'comment' list.id %}" class="card p-2" method="post">
+        {% csrf_token %}
+        <textarea name="comment" id="comment" cols="30" rows="4" class="form-control" placeholder="Leave a comment"></textarea>
+        <input type="submit" class="btn btn-primary" value="Add Comment">
+    </form>
+
+    </div>
+    <div class="col-md-7 col-lg-7">
+      <h1 class="d-inline mb-3">{{ list.title }}</h1>
+      <span class="text-muted">{{ list.get_category_display }}</span>
+      
+      <hr class="my-4">
+      <h5>Description:</h5>
+      <p>{{ list.description }}</p>
+
+      <hr class="my-4">
+      <h5>Comments:</h5>
+      <ul>
+        {% for comment in comments %}
+            <li>
+                {{ comment.coment }}
+            </li>
+        {% empty %}
+            <li>
+                No comment
+            </li>
+        {% endfor%} 
+      </ul>
+       
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

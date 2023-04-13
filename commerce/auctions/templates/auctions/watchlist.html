@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+
+
+
+    <div class="album py-5 bg-light" style="padding-top: 50px;">
+      <div class="container">
+       
+          <div class=" text-center">
+            <h3> your watchlist </h3>
+            <h6>&#9660</h6>
+          </div>
+          
+          <hr class="my-7">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for list in lists %} 
+          <div class="col">
+              <div class="card shadow-sm">
+
+                <img src="{{ list.list.url_image }}" alt="{{ list.list.title }}" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                
+                <div class="card-body text-center">
+                  <h5>{{ list.list.title }}</h5>
+                  <p class="text-muted">Bid: {{ list.start_bid }} USD</p>
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <a class="btn btn-primary" href="{% url 'listpage'  list.list.id %}" role="button">View More</a>
+                  </div>
+                  
+              </div>
+            </div>  
+          </div>
+        {% empty %}
+        <h3>No watchlist</h3>
+        {% endfor %}  
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

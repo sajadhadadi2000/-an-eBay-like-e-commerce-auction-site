@@ -1,0 +1,86 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+<div class="album py-5 bg-light" style="padding-top: 50px;">
+    <div class="container">
+        <div class=" text-center">
+          <h3> Category </h3>
+        </div>
+        <hr class="my-7">
+
+<div class="container px-4 py-5" id="custom-cards">
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">  
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/E.jpg' %}" class="card-img" height="250px" alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title ">Electronics</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/F.jpg' %}" class="card-img"  height="250px"  alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title">Fashion</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/T.jpg' %}" class="card-img" height="250px"  alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title">Toys</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/H.jpg' %}" class="card-img" height="250px" alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title">Home</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/S.jpg' %}" class="card-img" height="250px" alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title">Sport</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="#">
+            <div class="card text-bg-dark">
+                <img src="{% static 'auctions/O.jpg' %}" class="card-img" height="250px" alt="{{ category.1 }}">
+                <div class="card-img-overlay">
+                  <h3 class="card-title">Other</h3>
+                </div>
+            </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
